@@ -1,5 +1,5 @@
- {
-     "AWSTemplateFormatVersion" : "2010-09-09",
+{
+  "AWSTemplateFormatVersion" : "2010-09-09",
 
   "Description" : "AWS CloudFormation Sample Template ELBWithLockedDownAutoScaledInstances: Create a load balanced, Auto Scaled sample website where the instances are locked down to only accept traffic from the load balancer. This example creates an Auto Scaling group behind a load balancer with a simple health check. The web site is available on port 80, however, the instances can be configured to listen on any port (8888 by default). **WARNING** This template creates one or more Amazon EC2 instances and an Application Load Balancer. You will be billed for the AWS resources used if you create a stack from this template.",
 
@@ -20,15 +20,15 @@
       "Description" : "WebServer EC2 instance type",
       "Type" : "String",
       "Default" : "t2.small",
-      "AllowedValues" : [ "t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "g2.2xlarge", "g2.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "hi1.4xlarge", "hs1.8xlarge", "cr1.8xlarge", "cc2.8xlarge", "cg1.4xlarge"],
+      "AllowedValues" : [ "t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "g2.2xlarge", "g2.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "hi1.4xlarge", "hs1.8xlarge", "cr1.8xlarge", "cc2.8xlarge", "cg1.4xlarge"]
+,
       "ConstraintDescription" : "must be a valid EC2 instance type."
     },
 
     "KeyName" : {
       "Description" : "Name of an existing EC2 KeyPair to enable SSH access to the instances",
       "Type" : "AWS::EC2::KeyPair::KeyName",
-      "ConstraintDescription" : "must be the name of an existing EC2 KeyPair.",
-      "Default" : "sourcecloud",
+      "ConstraintDescription" : "must be the name of an existing EC2 KeyPair."
     },
 
     "SSHLocation" : {
@@ -62,7 +62,8 @@
       "sa-east-1"      : { "Examples" : "https://s3-sa-east-1.amazonaws.com/cloudformation-examples-sa-east-1" },
       "cn-north-1"     : { "Examples" : "https://s3.cn-north-1.amazonaws.com.cn/cloudformation-examples-cn-north-1" },
       "cn-northwest-1" : { "Examples" : "https://s3.cn-northwest-1.amazonaws.com.cn/cloudformation-examples-cn-northwest-1" }
-    },
+    }
+,
     "AWSInstanceType2Arch" : {
       "t1.micro"    : { "Arch" : "HVM64"  },
       "t2.nano"     : { "Arch" : "HVM64"  },
@@ -173,7 +174,8 @@
       "hs1.8xlarge" : { "Arch" : "NATHVM64"  },
       "cr1.8xlarge" : { "Arch" : "NATHVM64"  },
       "cc2.8xlarge" : { "Arch" : "NATHVM64"  }
-    },
+    }
+,
     "AWSRegionArch2AMI" : {
       "us-east-1"        : {"HVM64" : "ami-0ff8a91507f77f867", "HVMG2" : "ami-0a584ac55a7631c0c"},
       "us-west-2"        : {"HVM64" : "ami-a0cfeed8", "HVMG2" : "ami-0e09505bc235aa82d"},
@@ -203,7 +205,7 @@
       "Properties" : {
         "VPCZoneIdentifier" : { "Ref" : "Subnets" }, 
         "LaunchConfigurationName" : { "Ref" : "LaunchConfig" },
-        "MinSize" : "1",
+        "MinSize" : "2",
         "MaxSize" : "2",
         "TargetGroupARNs" : [ { "Ref" : "ALBTargetGroup" } ]
       },
